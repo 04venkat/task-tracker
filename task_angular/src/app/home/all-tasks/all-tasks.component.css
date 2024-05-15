@@ -1,0 +1,136 @@
+.heading {
+	border-bottom: solid 5px #6d2e88;
+	border-bottom-left-radius: 10px;
+	/* background-color: #0069d93f; */
+}
+
+.pagination {
+	text-align: center;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pages {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.page-number {
+	cursor: pointer;
+	background-color: white;
+	color: #999;
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.4s ease;
+}
+
+.active {
+	font-size: 1.3em;
+	height: 40px;
+	width: 40px;
+	background-color: #6d2e88;
+	color: white;
+}
+
+button {
+	width: 120px;
+	padding: 8px 16px;
+	background-color: #ffffff00;
+	color: #6d2e88;
+	border: none;
+	cursor: pointer;
+	margin: 0 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+button:hover {
+	color: #8a4ea3;
+}
+.createTaskBtn:hover {
+	color: white !important;
+}
+button:disabled {
+	background-color: #ffffff00;
+	color: #ccc;
+	cursor: not-allowed;
+}
+
+#prevPage {
+	margin-right: 20px;
+}
+
+#nextPage {
+	margin-left: 20px;
+}
+
+.arrow {
+	font-size: 1.2em;
+}
+
+.nav-text {
+	font-size: 0.7em;
+	letter-spacing: 0.3em;
+}
+
+.badgeForCreate {
+	background-color: #f59f8a !important;
+	color: #851a00 !important;
+}
+.badgeForInDevelopment {
+	background-color: #f6e1a2 !important;
+	color: #755800 !important;
+}
+.badgeForStaging {
+	background-color: #8fb2fa !important;
+	color: #011439 !important;
+}
+.badgeForPreProd {
+	background-color: #c194ec !important;
+	color: #37016b !important;
+}
+.badgeForProd {
+	background-color: #a0e38e !important;
+	color: #209401 !important;
+}
+
+.profile_picture {
+	width: 30px;
+	height: 30px;
+	object-fit: cover;
+}
+.categoryDevelopmentText {
+	background-color: #b0da9e;
+	color: #190482;
+	border-radius: 10%;
+}
+.categoryManagementText {
+	background-color: #08ffef2e;
+	color: #0c4a30;
+	border-radius: 10%;
+}
+.categoryDesignText {
+	background-color: #c2d9ff;
+	color: #190482;
+	border-radius: 10%;
+}
+.text-primary {
+	color: #6d2e88 !important;
+}
+
+.btn:hover {
+	background-color: #8a4ea3;
+	color: aliceblue;
+}
+.border-secondary {
+	/* color: #6d2e88 !important; */
+	border-color: #6d2e88 !important;
+}

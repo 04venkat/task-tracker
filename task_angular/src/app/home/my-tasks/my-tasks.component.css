@@ -1,0 +1,159 @@
+.heading {
+	border-bottom: solid 5px #6d2e88;
+	border-bottom-left-radius: 10px;
+	/* background-color: #0069d93f; */
+}
+
+.pagination {
+	text-align: center;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.pages {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.page-number {
+	cursor: pointer;
+	background-color: white;
+	color: #999;
+	border-radius: 50%;
+	height: 30px;
+	width: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.4s ease;
+}
+
+.actives {
+	font-size: 1.3em;
+	height: 40px;
+	width: 40px;
+	background-color: #6d2e88;
+	color: white;
+}
+
+button {
+	width: 120px;
+	padding: 8px 16px;
+	background-color: #ffffff00;
+	color: #6d2e88;
+	border: none;
+	cursor: pointer;
+	margin: 0 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+button:hover {
+	color: #8a4ea3;
+}
+.createTaskBtn:hover {
+	color: white !important;
+}
+button:disabled {
+	background-color: #ffffff00;
+	color: #ccc;
+	cursor: not-allowed;
+}
+
+#prevPage {
+	margin-right: 20px;
+}
+
+#nextPage {
+	margin-left: 20px;
+}
+
+.arrow {
+	font-size: 1.2em;
+}
+.nav-text {
+	font-size: 0.7em;
+	letter-spacing: 0.3em;
+}
+
+/* .highPriorityHeadingCard {
+	background-color: #dff5ff;
+}
+.highPriorityHeadingCard > span {
+	border-bottom: solid 5px 166, 177, 225;
+	border-bottom-left-radius: 10px;
+} */
+
+.categoryDevelopmentText {
+	background-color: #b0da9e;
+	color: #190482;
+	border-radius: 10%;
+}
+.categoryManagementText {
+	background-color: #08ffef2e;
+	color: #0c4a30;
+	border-radius: 10%;
+}
+.categoryDesignText {
+	background-color: #c2d9ff;
+	color: #190482;
+	border-radius: 10%;
+}
+/* .highPriorityHeadingCard {
+	background-color: #ffefe8 !important;
+	color: rgb(106, 8, 8) !important;
+	border-radius: 5px;
+}
+
+.mediumPriorityHeadingBadge {
+	background-color: #c2ffbd76 !important;
+	color: rgb(0, 0, 0) !important;
+	border-radius: 5px;
+}
+
+.lowPriorityBadge {
+	background-color: #5356ff !important;
+	color: white !important;
+}
+.lowPriorityHeadingCard {
+	background-color: #f7f7f7;
+	border-radius: 5px;
+	color: black;
+} */
+.text-primary {
+	color: #6d2e88 !important;
+}
+.highPriorityHeadingCard {
+	background-color: #9900f81f !important;
+	color: rgb(79, 12, 97) !important;
+	border-left: rgb(79, 12, 97) solid 5px;
+}
+
+.mediumPriorityHeadingBadge {
+	background-color: #2385f433 !important;
+	color: #032c5a !important;
+	border-left: #032c5a solid 5px;
+}
+
+.lowPriorityBadge {
+	background-color: #5356ff !important;
+	color: white !important;
+}
+.lowPriorityHeadingCard {
+	background-color: #f7f7f7;
+	border-left: rgb(0, 0, 0) solid 5px;
+}
+.all {
+	border-left: #000000 solid 5px;
+}
+.border-secondary {
+	color: #6d2e88 !important;
+	border-color: #6d2e88 !important;
+}
+.border-secondary::placeholder {
+	color: #6d2e88 !important;
+}

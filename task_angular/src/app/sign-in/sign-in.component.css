@@ -1,0 +1,18 @@
+/* .quote {
+  font-size: clamp(20px, 12vw, 150px);
+  font-weight: 1000;
+  background: url(../../assets/images/tumblr_p3mnp5LZGL1wx0595o1_1280.jpg)
+    no-repeat center fixed;
+  -webkit-background-size: cover;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+} */
+button {
+	background-color: #6d2e88;
+	color: aliceblue;
+}
+button:hover {
+	background-color: #8a4ea3;
+	color: aliceblue;
+}

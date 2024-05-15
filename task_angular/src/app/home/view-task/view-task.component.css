@@ -1,0 +1,78 @@
+.categoryDevelopmentText {
+	background-color: #b0da9e;
+	color: #190482;
+	border-radius: 10%;
+}
+.categoryManagementText {
+	background-color: #08ffef2e;
+	color: #0c4a30;
+	border-radius: 10%;
+}
+.categoryDesignText {
+	background-color: #c2d9ff;
+	color: #190482;
+	border-radius: 10%;
+}
+.highPriorityHeadingCard {
+	background-color: #ffefe8 !important;
+	color: rgb(106, 8, 8) !important;
+	border-radius: 5px;
+}
+
+.mediumPriorityHeadingBadge {
+	background-color: #c2ffbd76 !important;
+	color: rgb(0, 0, 0) !important;
+	border-radius: 5px;
+}
+
+.lowPriorityBadge {
+	background-color: #5356ff !important;
+	color: white !important;
+}
+.lowPriorityHeadingCard {
+	background-color: #f7f7f7;
+	border-radius: 5px;
+	color: black;
+}
+
+.keyOfData {
+	padding: 10px;
+}
+.keyOfValue {
+	padding: 10px;
+}
+.profile_picture {
+	width: 30px;
+	height: 30px;
+	object-fit: cover;
+}
+.attachment {
+	width: 300px;
+	height: 250px;
+}
+
+.badgeForCreate {
+	background-color: #f59f8a !important;
+	color: #851a00 !important;
+}
+.badgeForInDevelopment {
+	background-color: #f6e1a2 !important;
+	color: #755800 !important;
+}
+.badgeForStaging {
+	background-color: #8fb2fa !important;
+	color: #011439 !important;
+}
+.badgeForPreProd {
+	background-color: #c194ec !important;
+	color: #37016b !important;
+}
+.badgeForProd {
+	background-color: #a0e38e !important;
+	color: #209401 !important;
+}
+
+.closeBtn:hover {
+	color: red;
+	text-shadow: red 5px 5px 5px;
+}

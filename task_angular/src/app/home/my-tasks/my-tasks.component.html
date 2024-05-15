@@ -1,0 +1,498 @@
+@if(!loader){
+<div
+	class="position-absolute loader vh-100 d-flex justify-content-center align-items-center top-0 bottom-0 start-0 end-0"
+>
+	<div class="spinner-border text-primary" role="status">
+		<span class="visually-hidden">Loading...</span>
+	</div>
+</div>
+} @else{
+<div class="container-lg px-0 container-fluid mt-5 pt-5 px-lg-5">
+	<div class="mb-3">
+		<h2 class="fw-bold mb-3">
+			<span class="heading px-2">Your</span> works
+		</h2>
+		<ul class="nav nav-underline w-100 justify-content-sm-start">
+			<li class="nav-item">
+				<a
+					class="nav-link text-primary text-decoration-none"
+					[class.active]="statusTabActive === ''"
+					(click)="onSearch('', 0)"
+					aria-current="page"
+					>Recent</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link text-primary text-decoration-none"
+					[class.active]="statusTabActive === 'Created'"
+					(click)="onSearch('Created', 1)"
+					>Created</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link text-primary text-decoration-none"
+					[class.active]="statusTabActive === 'In_Development'"
+					(click)="onSearch('In_Development', 2)"
+					>In_Development</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link text-primary text-decoration-none"
+					[class.active]="statusTabActive === 'Staging'"
+					(click)="onSearch('Staging', 3)"
+					>Staging</a
+				>
+			</li>
+
+			<li class="nav-item">
+				<a
+					class="nav-link text-primary text-decoration-none"
+					[class.active]="statusTabActive === 'Pre_Prod'"
+					(click)="onSearch('Pre_Prod', 4)"
+					>Pre_Prod</a
+				>
+			</li>
+			<li class="nav-item">
+				<a
+					class="nav-link text-primary text-decoration-none"
+					[class.active]="statusTabActive === 'Prod'"
+					(click)="onSearch('Prod', 5)"
+					>Prod</a
+				>
+			</li>
+
+			<div class="mb-3 ms-lg-auto d-flex me-lg-3 rounded-pill">
+				<input
+					type="text"
+					class="form-control-plaintext border border-secondary border-3 border-top-0 border-start-0 border-end-0 rounded-pill px-3"
+					placeholder="Search..."
+					[(ngModel)]="searchTerm"
+					(input)="searchTasks()"
+				/>
+				<!-- <input
+					type="button"
+					class="btn border border-secondary border-3 border-top-0 border-start-0 border-end-0 rounded-pill px-3"
+					placeholder="Search..."
+					value="Search"
+				/> -->
+			</div>
+			<div class="mb-3 d-lg-none d-md-none d-block me-3">
+				<select
+					class="form-select border-secondary rounded-pill border border-3 border-top-0 border-start-0 border-end-0"
+					(change)="searchTasks()"
+					[(ngModel)]="searchPriority"
+				>
+					<option selected disabled value="">Priority</option>
+					<option value="">All</option>
+					<option value="High">High</option>
+					<option value="Medium">Medium</option>
+					<option value="Low">Low</option>
+				</select>
+			</div>
+		</ul>
+	</div>
+	<div
+		class="d-flex gap-4 justify-content-lg-around justify-content-md-between pb-5 mb-5"
+	>
+		<div class="d-flex gap-2 flex-column d-lg-none d-md-none col col-md-4">
+			<div class="shadow all py-2">
+				<h2 class="fw-bold ps-3 fs-5 d-inline">
+					<span class="ps-2">All &nbsp;</span>
+				</h2>
+			</div>
+
+			@for(task of tasks; track $index ){
+			<div
+				class="card shadow justify-content-center"
+				(click)="viewTask(task.id)"
+			>
+				<div class="card-body">
+					<div class="d-flex">
+						<h5 class="card-title fw-bold">
+							{{ task.title }}
+						</h5>
+					</div>
+					<table>
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-file-earmark"></i>
+									&nbsp;&nbsp;Task Id</span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								<span class="fs-6 fw-medium text-black">
+									Task-0{{ task.id }}
+								</span>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-calendar4-week"></i
+									>&nbsp;&nbsp;Deadline</span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								<span class="fs-6 text-black fw-medium">
+									{{ task.deadline }}
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-tags"></i>
+									&nbsp;&nbsp;Tags </span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								@if(task.category_id==1){
+								<p
+									class="badge me-2 mb-0 text-black categoryDevelopmentText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								} &nbsp;&nbsp; @if(task.category_id==2){
+								<p
+									class="badge me-2 mb-0 text-black categoryDesignText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								} @if(task.category_id==3){
+								<p
+									class="badge me-2 mb-0 text-black categoryManagementText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+
+								} @if(task.priority_id==1){
+								<p
+									class="badge me-2 mb-0 ms-auto highPriorityHeadingCard text-black text-start"
+								>
+									{{ task.priority.priority_level }}
+								</p>
+								} @if(task.priority_id==2){
+								<p
+									class="badge me-2 mb-0 ms-auto mediumPriorityHeadingBadge text-black text-start"
+								>
+									{{ task.priority.priority_level }}
+								</p>
+								} @if(task.priority_id==3){
+								<p
+									class="badge me-2 mb-0 ms-auto lowPriorityHeadingCard text-black text-start"
+								>
+									{{ task.priority.priority_level }}
+								</p>
+								}
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			}
+		</div>
+		<div class="d-none d-lg-flex d-md-flex gap-2 flex-column col col-md-4">
+			<div class="shadow py-2 mb-2 highPriorityHeadingCard">
+				<h5 class="fw-bold fs-5 ps-3">
+					<h2 class="fw-bold mb-3 fs-5 d-inline">
+						<span class="ps-2">High</span> priority
+					</h2>
+				</h5>
+			</div>
+
+			@for(task of tasks; track $index ){ @if(task.priority_id == 1){
+			<div
+				class="card shadow justify-content-center"
+				(click)="viewTask(task.id)"
+			>
+				<div class="card-body">
+					<div class="d-flex">
+						<h5 class="card-title fw-bold">{{ task.title }}</h5>
+					</div>
+
+					<table>
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-file-earmark"></i>
+									&nbsp;&nbsp;Task Id</span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								<span class="fs-6 fw-medium text-black">
+									Task-0{{ task.id }}
+								</span>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-calendar4-week"></i
+									>&nbsp;&nbsp;Deadline</span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								<span class="fs-6 text-black fw-medium">
+									{{ task.deadline | date }}
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-tags"></i>
+									&nbsp;&nbsp;Tags </span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								@if(task.category_id==1){
+								<p
+									class="badge me-2 mb-0 text-black categoryDevelopmentText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								} &nbsp;&nbsp; @if(task.category_id==2){
+								<p
+									class="badge me-2 mb-0 text-black categoryDesignText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								} @if(task.category_id==3){
+								<p
+									class="badge me-2 mb-0 text-black categoryManagementText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								<p
+									class="badge me-2 mb-0 d-lg-none d-md-none d-block ms-auto highPriorityHeadingCard text-black text-start"
+								>
+									{{ task.priority.priority_level }}
+								</p>
+								}
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			} }
+		</div>
+		<div class="d-none d-lg-flex d-md-flex gap-2 flex-column col col-md-4">
+			<div class="shadow py-2 mb-2 mediumPriorityHeadingBadge">
+				<h5 class="fw-bold fs-5 ps-3">Medium Priority</h5>
+			</div>
+			@for(task of tasks; track $index ){ @if(task.priority.id == 2){
+			<div
+				class="card shadow justify-content-center"
+				(click)="viewTask(task.id)"
+			>
+				<div class="card-body">
+					<div class="d-flex">
+						<h5 class="card-title fw-bold">{{ task.title }}</h5>
+					</div>
+					<table>
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-file-earmark"></i>
+									&nbsp;&nbsp;Task Id</span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								<span class="fs-6 fw-medium text-black">
+									Task-0{{ task.id }}
+								</span>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-calendar4-week"></i
+									>&nbsp;&nbsp;Deadline</span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								<span class="fs-6 text-black fw-medium">
+									{{ task.deadline | date }}
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-tags"></i>
+									&nbsp;&nbsp;Tags </span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								@if(task.category_id==1){
+								<p
+									class="badge me-2 mb-0 text-black categoryDevelopmentText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								} &nbsp;&nbsp; @if(task.category_id==2){
+								<p
+									class="badge me-2 mb-0 text-black categoryDesignText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								} @if(task.category_id==3){
+								<p
+									class="badge me-2 mb-0 text-black categoryManagementText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								<p
+									class="badge me-2 mb-0 d-lg-none d-md-none d-block ms-auto mediumPriorityHeadingBadge text-black text-start"
+								>
+									{{ task.priority.priority_level }}
+								</p>
+								}
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			} }
+		</div>
+		<div class="d-none d-lg-flex d-md-flex gap-2 flex-column col col-md-4">
+			<div class="shadow py-2 mb-2 lowPriorityHeadingCard">
+				<h5 class="fw-bold fs-5 ps-3">Low Priority</h5>
+			</div>
+			@for(task of tasks; track $index ){ @if(task.priority_id == 3){
+			<div
+				class="card shadow justify-content-center"
+				(click)="viewTask(task.id)"
+			>
+				<div class="card-body">
+					<div class="d-flex">
+						<h5 class="card-title fw-bold">{{ task.title }}</h5>
+					</div>
+					<table>
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-file-earmark"></i>
+									&nbsp;&nbsp;Task Id</span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								<span class="fs-6 fw-medium text-black">
+									Task-0{{ task.id }}
+								</span>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-calendar4-week"></i
+									>&nbsp;&nbsp;Deadline</span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								<span class="fs-6 text-black fw-medium">
+									{{ task.deadline | date }}
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="keyOfData">
+								<span
+									><i class="bi bi-tags"></i>
+									&nbsp;&nbsp;Tags </span
+								>&nbsp;&nbsp;
+							</td>
+							<td class="keyOfValue">
+								@if(task.category_id==1){
+								<p
+									class="badge me-2 mb-0 text-black categoryDevelopmentText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								} &nbsp;&nbsp; @if(task.category_id==2){
+								<p
+									class="badge me-2 mb-0 text-black categoryDesignText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+								} @if(task.category_id==3){
+								<p
+									class="badge me-2 mb-0 text-black categoryManagementText text-start"
+								>
+									{{ task.category.category_type }}
+								</p>
+
+								}
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			} }
+		</div>
+	</div>
+
+	<!-- pagination -->
+</div>
+
+<div class="position-fixed bottom-0 w-100 bg-white">
+	<div class="d-flex flex-column justify-content-center align-items-center">
+		<p>
+			Page {{ paginationInfo.current_page }} of
+			{{ paginationInfo.total_pages }}
+		</p>
+	</div>
+	<div class="pagination">
+		<button
+			class="arrow btn"
+			id="prevPage"
+			[class.disabled]="paginationInfo.current_page === 1"
+			(click)="changePage(paginationInfo.current_page - 1)"
+		>
+			←
+			<span
+				class="nav-text"
+				[class.disabled]="paginationInfo.current_page === 1"
+				>PREV</span
+			>
+		</button>
+		<div class="pages">
+			@for(page of getPageNumbers(paginationInfo.total_pages);track
+			$index){
+			<div
+				class="page-number"
+				[class.actives]="page === paginationInfo.current_page"
+				(click)="changePage(page)"
+			>
+				{{ page }}
+			</div>
+			}
+		</div>
+		<button
+			class="arrow btn"
+			id="nextPage"
+			[class.disabled]="
+				paginationInfo.current_page === paginationInfo.total_pages
+			"
+			(click)="changePage(paginationInfo.current_page + 1)"
+		>
+			<span
+				class="nav-text"
+				[class.disabled]="
+					paginationInfo.current_page === paginationInfo.total_pages
+				"
+				>NEXT</span
+			>
+			→
+		</button>
+	</div>
+</div>
+}

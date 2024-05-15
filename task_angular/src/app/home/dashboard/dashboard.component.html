@@ -1,0 +1,102 @@
+@if(!loader){
+<div
+	class="position-absolute loader vh-100 d-flex justify-content-center align-items-center top-0 bottom-0 start-0 end-0"
+>
+	<div class="spinner-border text-primary" role="status">
+		<span class="visually-hidden">Loading...</span>
+	</div>
+</div>
+} @else{
+<div class="container pt-5">
+	<div class="row mt-5 ptlg-5">
+		<h3 class="fw-bold mb-3">
+			<span class="heading px-2">Task</span> Status
+		</h3>
+		<div
+			class="d-flex mb-5 flex-row flex-wrap gap-3 justify-content-evenly align-items-center"
+		>
+			<div
+				class="col-lg-3 badgeForCreate transformCards col-md-4 col-12 px-3 py-4 shadow"
+			>
+				<h3 class="fw-bold">Created</h3>
+				<h3 class="fw-bold">
+					{{ status?.Created || 0 }}
+				</h3>
+			</div>
+			<div
+				class="col-lg-3 col-md-4 col-12 badgeForInDevelopment transformCards px-3 py-4 shadow"
+			>
+				<h3 class="fw-bold">In development</h3>
+				<h3 class="fw-bold">
+					{{ status?.In_Development || 0 }}
+				</h3>
+			</div>
+			<div
+				class="col-lg-3 col-md-4 col-12 badgeForStaging transformCards px-3 py-4 shadow"
+			>
+				<h3 class="fw-bold">Staging</h3>
+				<h3 class="fw-bold">
+					{{ status?.Staging || 0 }}
+				</h3>
+			</div>
+
+			<div
+				class="col-lg-3 col-md-4 col-12 badgeForPreProd transformCards px-3 py-4 shadow"
+			>
+				<h3 class="fw-bold">Pre_Prod</h3>
+				<h3 class="fw-bold">
+					{{ status?.Pre_Prod || 0 }}
+				</h3>
+			</div>
+			<div
+				class="col-lg-3 col-md-4 col-12 badgeForProd transformCards px-3 py-4 shadow"
+			>
+				<h3 class="fw-bold">Prod</h3>
+				<h3 class="fw-bold">
+					{{ status?.Prod || 0 }}
+				</h3>
+			</div>
+			<div
+				class="col-lg-3 col-md-4 col-12 transformCards all px-3 py-4 shadow"
+			>
+				<h3 class="fw-bold">All</h3>
+				<h3 class="fw-bold">
+					{{ taskCount.totalTasks || 0 }}
+				</h3>
+			</div>
+		</div>
+		<h3 class="fw-bold mb-3">
+			<span class="heading px-2">Task</span> Priority
+		</h3>
+		<div
+			class="d-flex flex-row flex-wrap gap-3 justify-content-evenly align-items-center"
+		>
+			<div
+				class="col-lg-3 highPriorityHeadingCard transformCards col-md-4 col-12 px-3 py-4 shadow"
+			>
+				<h3 class="fw-bold">High</h3>
+				<h3 class="fw-bold">
+					{{ priority?.High || 0 }}
+				</h3>
+			</div>
+			<div
+				class="col-lg-3 col-md-4 col-12 mediumPriorityHeadingBadge transformCards px-3 py-4 shadow"
+			>
+				<h3 class="fw-bold">Medium</h3>
+				<h3 class="fw-bold">
+					{{ priority?.Medium || 0 }}
+				</h3>
+			</div>
+			<div
+				class="col-lg-3 col-md-4 col-12 lowPriorityHeadingCard transformCards px-3 py-4 shadow"
+			>
+				<h3 class="fw-bold">Low</h3>
+				<h3 class="fw-bold">
+					{{ priority?.Low || 0 }}
+				</h3>
+			</div>
+		</div>
+	</div>
+</div>
+
+}

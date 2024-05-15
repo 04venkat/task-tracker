@@ -1,0 +1,96 @@
+<app-header></app-header>
+<div class="container-fluid">
+	<div class="row vh-100 justify-content-center">
+		<div class="col-12 col-md-6 col-lg-6">
+			<div
+				class="d-flex flex-column vh-100 pt-md-5 justify-content-center align-items-center"
+			>
+				<form
+					class="card shadow p-5 pt-3"
+					(onSubmit)="signIn()"
+					[formGroup]="form"
+				>
+					<h2 class="text-center">Sign in</h2>
+
+					<div class="form-floating mb-2 mt-2">
+						<input
+							type="text"
+							class="form-control"
+							id="username"
+							name="username"
+							placeholder="Enter your  username"
+							formControlName="username"
+							required
+						/>
+						<label for="username">Username </label>
+					</div>
+					<span
+						*ngIf="
+							validate.isFieldInvalid(
+								'username',
+								form,
+								isFormSubmitted
+							)
+						"
+						class="text-danger fs-6"
+					>
+						{{
+							validate.getErrorMessage(
+								form,
+								"username",
+								"Username"
+							)
+						}}
+					</span>
+					<span [innerHTML]="usernameErrorMessage"></span>
+					<div class="form-floating mb-2 mt-2">
+						<input
+							type="password"
+							class="form-control"
+							id="password"
+							name="password"
+							placeholder="Enter your password"
+							formControlName="password"
+							required
+						/>
+						<label for="password">Password</label>
+					</div>
+					<span
+						*ngIf="
+							validate.isFieldInvalid(
+								'password',
+								form,
+								isFormSubmitted
+							)
+						"
+						class="text-danger fs-6"
+					>
+						{{
+							validate.getErrorMessage(
+								form,
+								"password",
+								"Password"
+							)
+						}}
+					</span>
+					<span
+						[innerHTML]="errorMessage"
+						class="text-danger fs-6"
+					></span>
+					<div>
+						<button class="btn text-white w-100" (click)="signIn()">
+							@if(signInLoader){
+							<div
+								class="spinner-border text-white"
+								role="status"
+							>
+								<span class="visually-hidden">Loading...</span>
+							</div>
+							} @else { Sign In }
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

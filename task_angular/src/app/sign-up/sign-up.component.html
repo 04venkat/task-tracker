@@ -1,0 +1,193 @@
+<app-header></app-header>
+<div class="container-fluid">
+	<div class="row vh-100 justify-content-center">
+		<div class="col-12 col-md-6 col-lg-6">
+			<div
+				class="d-flex flex-column vh-100 pt-5 justify-content-center align-items-center"
+			>
+				<form
+					class="card shadow p-5 pt-3"
+					(onSubmit)="signUp()"
+					[formGroup]="form"
+				>
+					<h2 class="text-center mb-4">Sign up</h2>
+					<div class="d-flex justify-content-center">
+						<div class="profile_upload position-relative">
+							<img
+								[src]="imageUrl"
+								width="150"
+								height="150"
+								class="object-fit-cover"
+								alt="profile"
+							/>
+							<div
+								class="d-flex edit justify-content-center align-items-center"
+							>
+								<label for="profile_picture">
+									<i class="bi bi-camera fs-1 text-white"></i>
+								</label>
+							</div>
+							<input
+								type="file"
+								name="file"
+								class="d-none"
+								id="profile_picture"
+								formControlName="profile_picture"
+								(change)="onFileSelected($event)"
+							/>
+
+							<small
+								class="text-start text-danger"
+								[innerHTML]="imageError"
+							></small>
+						</div>
+					</div>
+
+					<span
+						class="text-danger"
+						*ngIf="
+							validate.isFieldInvalid(
+								'profile_picture',
+								form,
+								isFormSubmitted
+							)
+						"
+					>
+						{{
+							validate.getErrorMessage(
+								form,
+								"profile_picture",
+								"Profile picture"
+							)
+						}}
+					</span>
+					<span
+						class="text-danger"
+						[innerHTML]="profileErrorMessage"
+					></span>
+
+					<div class="form-floating mb-2 mt-2">
+						<input
+							type="text"
+							class="form-control"
+							id="full_name"
+							name="full_name"
+							formControlName="full_name"
+							placeholder="Enter your fullname"
+							required
+							pattern
+						/>
+						<label for="full_name">Fullname</label>
+					</div>
+					<span
+						class="text-danger"
+						*ngIf="
+							validate.isFieldInvalid(
+								'full_name',
+								form,
+								isFormSubmitted
+							)
+						"
+					>
+						{{
+							validate.getErrorMessage(
+								form,
+								"full_name",
+								"Fullname"
+							)
+						}}
+					</span>
+					<span
+						class="text-danger"
+						[innerHTML]="fullNameErrorMessage"
+					></span>
+
+					<div class="form-floating mb-2 mt-2">
+						<input
+							type="username"
+							class="form-control"
+							id="username"
+							name="username"
+							formControlName="username"
+							placeholder="Enter your username"
+							required
+							maxlength="25"
+							minlength="3"
+						/>
+						<label for="input1">Username</label>
+					</div>
+					<span
+						class="text-danger"
+						*ngIf="
+							validate.isFieldInvalid(
+								'username',
+								form,
+								isFormSubmitted
+							)
+						"
+					>
+						{{
+							validate.getErrorMessage(
+								form,
+								"username",
+								"Username"
+							)
+						}}
+					</span>
+					<span
+						class="text-danger"
+						[innerHTML]="usernameErrorMessage"
+					></span>
+
+					<div class="form-floating mb-2 mt-2">
+						<input
+							type="password"
+							class="form-control"
+							id="password"
+							name="password"
+							formControlName="password"
+							placeholder="Enter your password"
+							required
+						/>
+						<label for="password">Password</label>
+					</div>
+					<span
+						class="text-danger"
+						*ngIf="
+							validate.isFieldInvalid(
+								'password',
+								form,
+								isFormSubmitted
+							)
+						"
+					>
+						{{
+							validate.getErrorMessage(
+								form,
+								"password",
+								"Password"
+							)
+						}}
+					</span>
+
+					<div>
+						<button class="btn text-white w-100" (click)="signUp()">
+							@if(loader){
+							<div
+								class="spinner-border text-primary"
+								role="status"
+							>
+								<span
+									class="text-danger"
+									class="visually-hidden"
+									>Loading...</span
+								>
+							</div>
+							} @else { Sign up }
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

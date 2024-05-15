@@ -1,0 +1,60 @@
+.badgeForCreate {
+	background-color: #f59f8a34 !important;
+	color: #df2f04 !important;
+	border-left: #cd340e solid 5px;
+}
+.badgeForInDevelopment {
+	background-color: #f6e1a23c !important;
+	color: #755800 !important;
+	border-left: #755800 solid 5px;
+}
+.badgeForStaging {
+	background-color: #8fb3fa50 !important;
+	color: #011439 !important;
+	border-left: #011439 solid 5px;
+}
+.badgeForPreProd {
+	background-color: #c194ec3a !important;
+	color: #37016b !important;
+	border-left: #37016b solid 5px;
+}
+.badgeForProd {
+	background-color: #a0e38e3b !important;
+	color: #209401 !important;
+	border-left: #209401 solid 5px;
+}
+.all {
+	border-left: #000000 solid 5px;
+}
+.highPriorityHeadingCard {
+	background-color: #9900f81f !important;
+	color: rgb(79, 12, 97) !important;
+	border-left: rgb(79, 12, 97) solid 5px;
+}
+
+.mediumPriorityHeadingBadge {
+	background-color: #2385f433 !important;
+	color: #032c5a !important;
+	border-left: #032c5a solid 5px;
+}
+
+.lowPriorityBadge {
+	background-color: #5356ff !important;
+	color: white !important;
+}
+.lowPriorityHeadingCard {
+	background-color: #f7f7f7;
+	border-left: rgb(0, 0, 0) solid 5px;
+}
+.text-primary {
+	color: #6d2e88 !important;
+}
+.heading {
+	border-bottom: solid 5px #6d2e88;
+	border-bottom-left-radius: 10px;
+	/* background-color: #0069d93f; */
+}
+
+.transformCards:hover {
+	transform: scale(1.1);
+}

@@ -1,0 +1,35 @@
+.profile_upload {
+	width: 150px;
+	height: 150px;
+	border: 2px solid black;
+	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+}
+.edit {
+	position: absolute;
+	top: 70%;
+	bottom: 0;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.414);
+}
+
+.angular-editor {
+	color: black !important;
+}
+code {
+	background-color: white !important;
+}
+button {
+	background-color: #6d2e88;
+	color: aliceblue;
+}
+button:hover {
+	background-color: #8a4ea3;
+	color: aliceblue;
+}
+.text-primary {
+	color: #6d2e88 !important;
+}
